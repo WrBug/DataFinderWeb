@@ -5,13 +5,13 @@ class IconUtils {
         return 'assets/ic_apk.png';
       case 'Database':
         return 'assets/ic_database.png';
-      case 'SharedPreference':
+      case 'Xml':
         return 'assets/ic_xml.png';
       case 'Dir':
         return 'assets/ic_dir.png';
       case 'SdCard':
         return 'assets/ic_sd_card.png';
     }
-    return 'assets/ic_dir.png';
+    return 'assets/ic_file.png';
   }
 }

@@ -1,4 +1,6 @@
-class FileInfo {
+import 'package:data_finder_web/model/entity/base_file_info.dart';
+
+class FileInfo extends BaseFileInfo {
   String downloadUrl;
   String md5;
   int modifyTime;

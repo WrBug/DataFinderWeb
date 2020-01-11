@@ -2,6 +2,7 @@ import 'package:data_finder_web/model/entity/file_info.dart';
 import 'package:data_finder_web/network/api.dart';
 import 'package:data_finder_web/util/download_manager.dart';
 import 'package:data_finder_web/util/icon_utils.dart';
+import 'package:data_finder_web/util/toast_utils.dart';
 import 'package:flutter/material.dart';
 
 class FileInfoPage extends StatefulWidget {
@@ -43,8 +44,12 @@ class _FileInfoPage extends State<FileInfoPage> {
 
   void getFileInfo() async {
     var info = await ApiRequest.getFileInfo(filePath);
+    if (!info.success) {
+      ToastUtils.showLong(context, info.message);
+      return;
+    }
     setState(() {
-      _fileInfo = info;
+      _fileInfo = info.data;
     });
   }
 

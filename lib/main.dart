@@ -1,4 +1,5 @@
 import 'package:data_finder_web/model/entity/home_info.dart';
+import 'package:data_finder_web/page/directory_info_page.dart';
 import 'package:data_finder_web/page/file_info_page.dart';
 import 'package:flutter/material.dart';
 
@@ -106,6 +107,8 @@ class _HomeState extends State<Home> {
             onTap: () {
               if (homeInfo.isFile()) {
                 FileInfoPage.start(context, homeInfo.path);
+              } else {
+                DirectoryInfoPage.start(context, homeInfo.path);
               }
             },
           );
