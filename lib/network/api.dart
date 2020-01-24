@@ -1,7 +1,6 @@
 import 'package:data_finder_web/model/entity/directory_info.dart';
 import 'package:data_finder_web/model/entity/file_info.dart';
 import 'package:data_finder_web/model/entity/home_info.dart';
-import 'package:data_finder_web/network/response_data.dart';
 import 'http_utils.dart';
 
 class ApiRequest {
@@ -10,6 +9,16 @@ class ApiRequest {
     List<HomeInfo> list = [];
     response.data.forEach((item) {
       var info = HomeInfo.fromJson(item);
+      list.add(info);
+    });
+    return list;
+  }
+
+  static Future<List<FileInfo>> getHistory() async {
+    var response = await HttpUtils.post("/history");
+    List<FileInfo> list = [];
+    response?.data?.forEach((item) {
+      var info = FileInfo.fromJson(item);
       list.add(info);
     });
     return list;
