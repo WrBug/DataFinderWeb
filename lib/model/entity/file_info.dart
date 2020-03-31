@@ -11,7 +11,8 @@ class FileInfo extends BaseFileInfo {
   String fileType;
   String name;
   String path;
-  String type;
+  String iconType;
+  int fileId;
 
   FileInfo(
       {this.downloadUrl,
@@ -24,7 +25,8 @@ class FileInfo extends BaseFileInfo {
       this.fileType,
       this.name,
       this.path,
-      this.type});
+      this.iconType,
+      this.fileId});
 
   String getFileSize() {
     double s = size / 1024.0;
@@ -59,7 +61,8 @@ class FileInfo extends BaseFileInfo {
     fileType = json['fileType'];
     name = json['name'];
     path = json['path'];
-    type = json['type'];
+    iconType = json['iconType'];
+    fileId = json['fileId'];
   }
 
   Map<String, dynamic> toJson() {
@@ -74,7 +77,8 @@ class FileInfo extends BaseFileInfo {
     data['fileType'] = this.fileType;
     data['name'] = this.name;
     data['path'] = this.path;
-    data['type'] = this.type;
+    data['iconType'] = this.iconType;
+    data['fileId'] = this.fileId;
     return data;
   }
 }

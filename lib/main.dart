@@ -167,7 +167,7 @@ class _HomeState extends State<Home> {
               child: Row(
                 children: <Widget>[
                   Image.asset(
-                    historyInfo.getIcon(),
+                    historyInfo.getIconType(),
                     width: 24,
                     height: 24,
                   ),

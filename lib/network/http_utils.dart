@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import 'package:data_finder_web/network/response_data.dart';
+import 'package:data_finder_web/util/window_manager.dart';
 import 'package:dio/adapter_browser.dart';
 import 'package:dio/browser_imp.dart';
 import 'package:dio/dio.dart';
 import 'dart:html';
-
 
 class HttpUtils {
   static var _dio;
@@ -41,13 +41,13 @@ class HttpUtils {
   }
 
   static void download(String path) {
-    window.open(getUrl() + path, "");
+    WindowManager.openPageOnNewTab(getUrl() + path);
   }
 
   static String getUrl() {
     var host = window.location.hostname;
     var port = window.location.port;
-    host = "192.168.1.15";
+    host = "172.18.212.47";
     port = "57335";
     var u = window.location.protocol + "//" + host + ":" + port;
     if (u != _url) {
