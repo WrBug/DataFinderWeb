@@ -38,12 +38,22 @@ class _HomeState extends State<Home> {
     super.initState();
   }
 
-  void _getData() async {
+  void _getData() {
+    getHomeInfo();
+    getHistory();
+  }
+
+  void getHomeInfo() async {
     var list = await ApiRequest.homeInfo();
-    var history = await ApiRequest.getHistory();
     setState(() {
       _homeInfoList.clear();
       _homeInfoList.addAll(list);
+    });
+  }
+
+  void getHistory() async {
+    var history = await ApiRequest.getHistory();
+    setState(() {
       _historyInfo.clear();
       _historyInfo.addAll(history);
     });

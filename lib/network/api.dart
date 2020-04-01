@@ -1,7 +1,7 @@
 import 'package:data_finder_web/model/entity/directory_info.dart';
-import 'package:data_finder_web/model/entity/file_info.dart';
 import 'package:data_finder_web/model/entity/home_info.dart';
 import 'package:data_finder_web/model/entity/preview_info.dart';
+import '../model/entity/file_info.dart';
 import 'http_utils.dart';
 
 class ApiRequest {
