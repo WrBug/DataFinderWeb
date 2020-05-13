@@ -1,8 +1,10 @@
 import 'package:data_finder_web/model/entity/file_info.dart';
 import 'package:data_finder_web/network/api.dart';
+import 'package:data_finder_web/preview/preview_manager.dart';
 import 'package:data_finder_web/util/download_manager.dart';
 import 'package:data_finder_web/util/icon_utils.dart';
 import 'package:data_finder_web/util/toast_utils.dart';
+import 'package:data_finder_web/util/window_manager.dart';
 import 'package:flutter/material.dart';
 
 class FileInfoPage extends StatefulWidget {
@@ -72,7 +74,7 @@ class _FileInfoPage extends State<FileInfoPage> {
               Container(
                 width: 128,
                 child: Image.asset(
-                  IconUtils.getIcon(_fileInfo.type),
+                  IconUtils.getIcon(_fileInfo.iconType),
                   width: 128,
                   height: 128,
                 ),
@@ -92,7 +94,7 @@ class _FileInfoPage extends State<FileInfoPage> {
             padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
           ),
           _buildButton("预览", _fileInfo.preview, () {
-            DownloadManager.download(_fileInfo.downloadUrl);
+            getFilePreview(_fileInfo.fileId);
           }),
           _buildButton("下载", _fileInfo.readable, () {
             DownloadManager.download(_fileInfo.downloadUrl);
@@ -135,5 +137,13 @@ class _FileInfoPage extends State<FileInfoPage> {
         ),
       )
     ]);
+  }
+
+  void getFilePreview(int fileId) async {
+    var result = await ApiRequest.getFilePreview(_fileInfo.fileId);
+    if (result.success) {
+      var info = result.data;
+      PreviewManager.goPreview(info);
+    }
   }
 }

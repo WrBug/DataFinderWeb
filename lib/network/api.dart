@@ -1,7 +1,7 @@
 import 'package:data_finder_web/model/entity/directory_info.dart';
-import 'package:data_finder_web/model/entity/file_info.dart';
 import 'package:data_finder_web/model/entity/home_info.dart';
-import 'package:data_finder_web/network/response_data.dart';
+import 'package:data_finder_web/model/entity/preview_info.dart';
+import '../model/entity/file_info.dart';
 import 'http_utils.dart';
 
 class ApiRequest {
@@ -10,6 +10,16 @@ class ApiRequest {
     List<HomeInfo> list = [];
     response.data.forEach((item) {
       var info = HomeInfo.fromJson(item);
+      list.add(info);
+    });
+    return list;
+  }
+
+  static Future<List<FileInfo>> getHistory() async {
+    var response = await HttpUtils.post("/history");
+    List<FileInfo> list = [];
+    response?.data?.forEach((item) {
+      var info = FileInfo.fromJson(item);
       list.add(info);
     });
     return list;
@@ -30,6 +40,15 @@ class ApiRequest {
       return new ApiResult.failed(response.message);
     }
     return new ApiResult.success(DirectoryInfo.fromJson(response.data));
+  }
+
+  static Future<ApiResult<PreviewInfo>> getFilePreview(int fileId) async {
+    var response =
+        await HttpUtils.post("/get_file_preview", body: {"id": fileId});
+    if (!response.success) {
+      return new ApiResult.failed(response.message);
+    }
+    return new ApiResult.success(PreviewInfo.fromJson(response.data));
   }
 }
 

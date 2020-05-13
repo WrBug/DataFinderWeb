@@ -128,7 +128,7 @@ class _DirectoryInfoPage extends State<DirectoryInfoPage> {
                     child: Row(
                       children: <Widget>[
                         Image.asset(
-                          info.getIcon(),
+                          info.getIconType(),
                           width: 24,
                           height: 24,
                         ),

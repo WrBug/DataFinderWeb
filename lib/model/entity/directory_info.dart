@@ -8,7 +8,7 @@ class DirectoryInfo extends BaseFileInfo {
   String fileType;
   String name;
   String path;
-  String type;
+  String iconType;
 
   DirectoryInfo(
       {this.children,
@@ -17,7 +17,7 @@ class DirectoryInfo extends BaseFileInfo {
       this.fileType,
       this.name,
       this.path,
-      this.type});
+      this.iconType});
 
   DirectoryInfo.fromJson(Map<String, dynamic> json) {
     if (json['children'] != null) {
@@ -36,7 +36,7 @@ class DirectoryInfo extends BaseFileInfo {
     fileType = json['fileType'];
     name = json['name'];
     path = json['path'];
-    type = json['type'];
+    iconType = json['iconType'];
   }
 
   Map<String, dynamic> toJson() {
@@ -51,7 +51,7 @@ class DirectoryInfo extends BaseFileInfo {
     data['fileType'] = this.fileType;
     data['name'] = this.name;
     data['path'] = this.path;
-    data['type'] = this.type;
+    data['iconType'] = this.iconType;
     return data;
   }
 }

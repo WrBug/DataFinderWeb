@@ -1,23 +1,23 @@
 import 'package:data_finder_web/util/icon_utils.dart';
 
 class HomeInfo {
-  String icon;
+  String iconType;
   String name;
   String path;
   bool readable;
   String fileType;
 
-  HomeInfo({this.icon, this.name, this.path, this.readable, this.fileType});
+  HomeInfo({this.iconType, this.name, this.path, this.readable, this.fileType});
 
   HomeInfo.fromJson(Map<String, dynamic> json) {
-    icon = json['icon'];
+    iconType = json['iconType'];
     name = json['name'];
     path = json['path'];
     readable = json['readable'];
     fileType = json['fileType'];
   }
 
-  String getIcon() => IconUtils.getIcon(icon);
+  String getIcon() => IconUtils.getIcon(iconType);
 
   bool isFile() {
     return fileType == 'FILE';
@@ -25,7 +25,7 @@ class HomeInfo {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['icon'] = this.icon;
+    data['iconType'] = this.iconType;
     data['name'] = this.name;
     data['path'] = this.path;
     data['readable'] = this.readable;
