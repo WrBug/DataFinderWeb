@@ -47,8 +47,8 @@ class HttpUtils {
   static String getUrl() {
     var host = window.location.hostname;
     var port = window.location.port;
-    host = "172.18.212.47";
-    port = "57335";
+//    host = "172.18.212.47";
+//    port = "57335";
     var u = window.location.protocol + "//" + host + ":" + port;
     if (u != _url) {
       _url = u;
